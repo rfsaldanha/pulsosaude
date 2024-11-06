@@ -1,6 +1,7 @@
 # Packages
 library(tidyverse)
 library(furrr)
+library(purrr)
 library(cli)
 library(harbinger)
 
@@ -34,8 +35,9 @@ plan(multisession, workers = 18)
 # Execute
 res <- future_map(.x = sia_gp, .f = anom_process, .progress = TRUE)
 
+# Discard nulls
+res_2 <- discard(res, is.null)
 
-
-ggplot(res[[18]], aes(x = PA_CMP, y = freq, stat = "identity")) +
+ggplot(res_2[[300]], aes(x = PA_CMP, y = freq, stat = "identity")) +
   geom_line() +
   geom_point(aes(color = event))
