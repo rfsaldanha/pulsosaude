@@ -9,8 +9,8 @@ library(tictoc)
 con <- dbConnect(duckdb(), dbdir = "data.duckdb", read_only = FALSE)
 
 # Download data
-ufs <- c("RJ")
-years <- 2017:2023
+ufs <- c("RS")
+years <- 2022:2024
 months <- 1:12
 table_name <- "sia_pa"
 
