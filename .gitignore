@@ -47,3 +47,10 @@ po/*~
 
 # RStudio Connect folder
 rsconnect/
+
+# Database
+*.duckdb
+*.wal
+
+# RDS
+*.rds
