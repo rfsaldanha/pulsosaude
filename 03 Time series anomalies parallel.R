@@ -22,6 +22,9 @@ anom_process <- function(df, model = hanr_arima()){
   return(tmp_anom)
 }
 
+sia_ts <- sia_ts |>
+  filter(PA_PROC_ID == "0301010064")
+
 # Split data to list
 sia_gp <- sia_ts |>
   group_by(PA_CODUNI, PA_PROC_ID) |>
@@ -36,6 +39,6 @@ res <- future_map(.x = sia_gp, .f = anom_process, .progress = TRUE)
 
 
 
-ggplot(res[[1159]], aes(x = PA_CMP, y = freq, stat = "identity")) +
+ggplot(res[[18]], aes(x = PA_CMP, y = freq, stat = "identity")) +
   geom_line() +
   geom_point(aes(color = event))
