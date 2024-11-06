@@ -22,9 +22,6 @@ anom_process <- function(df, model = hanr_arima()){
   return(tmp_anom)
 }
 
-sia_ts <- sia_ts |>
-  filter(PA_PROC_ID == "0301010064")
-
 # Split data to list
 sia_gp <- sia_ts |>
   group_by(PA_CODUNI, PA_PROC_ID) |>
